@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><title>Topic Modeling using LDA Model</title>
+        <style>
+
+            * {
+                padding: 0;
+                margin: 0;
+                color: #1a1f36;
+                box-sizing: border-box;
+                word-wrap: break-word;
+                font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Ubuntu,sans-serif;
+            }
+            body {
+                min-height: 100%;
+                background-color: #ffffff;
+            }
+            h1 {
+                letter-spacing: -1px;
+                padding: 10px;
+            }
+                      
+            button {
+                border: none;
+                /*display: block;*/
+                text-align: center;
+                cursor: pointer;
+                text-transform: uppercase;
+                outline: none;
+                overflow: hidden;
+                position: relative;
+                color: #5a5a5a;
+                font-weight: 700;
+                font-size: 15px;
+                background-color: #e1ffde;
+                padding: 17px 60px;
+                margin: 0 auto;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+                }
+
+                /*button span 
+                {
+                    position: relative; 
+                    z-index: 1;
+                }*/
+
+                button:after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 490%;
+                    width: 140%;
+                    background: #78c7d2;
+                    -webkit-transition: all .5s ease-in-out;
+                    transition: all .5s ease-in-out;
+                    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+                    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+                }
+
+                button:hover:after {
+                    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+                    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+                }
+                .background{
+                    background-color: #FFDEE9;
+                    background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+
+                }
+                textarea
+                {
+                    width:50%;
+                    border:2px solid #aaa;
+                    border-radius:4px;
+                    margin:8px 0;
+                    margin-left: 10px;
+                    outline:none;
+                    padding:8px;
+                    box-sizing:border-box;
+                    transition:.3s;
+                }
+            
+                textarea:focus
+                {
+                    border-color:dodgerBlue;
+                    box-shadow:0 0 8px 0 dodgerBlue;
+                }
+                p 
+                {
+                    /*color: #f8f8f8;*/ 
+                    font-family: 'Raleway',sans-serif; 
+                    font-size: 18px; font-weight: 500; 
+                    line-height: 32px;
+                    margin: 0 0 24px; 
+                }
+                
+        </style>
+        
+    </head>
+<body class="background">
+    <h1 >Topic Modeling using LDA Model</h1>
+    <form method="POST" action="/classify" >
+         <textarea name="rawtext" cols="100" rows="10" class="form-control-field input" required="true" placeholder="Enter Text Here"></textarea>
+
+         <br/>
+         <div style="margin-left: 10px;">
+
+         
+         <button style="margin-right: 30px;" class="btn btn-small waves-effect waves-light  light-blue lighten-1" type="reset" >Clear</button>
+          <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Submit</button>
+        </div>
+    </form>
+
+
+    <div style="margin: 20px ;">
+    <h2 style="padding: 5px;">Dominant topic no. {{dom}}</h2>
+    <h3 style="padding: 3px;">Topic distribution:</h3>
+    <p>Topic 0 :<br>{{T1}}</p>
+    <p>Topic 1 :<br>{{T2}}</p>
+    <p>Topic 2 :<br>{{T3}}</p>
+    <p>Topic 3 :<br>{{T4}}</p>
+    <p>Topic 4 :<br>{{T5}}</p>
+</div>
+<div style="margin: 30px;">
+
+
+
+    <ul class="collection with-header">
+        <li class="collection-header"><h3><b>Relevant documents</b></h3></li>
+{#    loop through galaxies and render them in list#}
+        {% for para in paras %}
+            <li class="collection-item">{{ para }}</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+
+</html>
